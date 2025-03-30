@@ -1,0 +1,203 @@
+# Data Types
+
+## Atom
+
+```elixir
+:error
+```
+
+```elixir
+{:error, reason} = {:error, "file not found"}
+reason
+```
+
+## Strings
+
+```elixir
+name = "Johnson"
+```
+
+```elixir
+is_binary(name)
+```
+
+```elixir
+msg = "Hello " <> name
+```
+
+```elixir
+"Hello " <> name = msg
+name
+```
+
+```elixir
+<<head, rest::binary>> = name
+head
+```
+
+```elixir
+head == ?J
+```
+
+```elixir
+<<"J", rest::binary>> = name
+rest
+```
+
+```elixir
+<<"Jo", rest::binary>> = name
+rest
+```
+
+```elixir
+<<head::binary-size(2), rest::binary>> = name
+head
+```
+
+## Charlist
+
+```elixir
+chars = ~c"Johnson"
+```
+
+```elixir
+~c"Hello " ++ chars
+```
+
+```elixir
+is_list(chars)
+```
+
+```elixir
+?J
+```
+
+## Process
+
+```elixir
+my_pid = self()
+my_pid
+```
+
+## Lists Are Not Lists - They are Singly Linked Lists
+
+```elixir
+list = ["a", "b", "c"]
+```
+
+```elixir
+Enum.at(list, 0)
+```
+
+```elixir
+[first, second, third] = list
+second
+```
+
+```elixir
+[_,_,third] = ["a", "b", "c"]
+third
+```
+
+```elixir
+hd(list)
+```
+
+```elixir
+tl(list)
+```
+
+```elixir
+[h | t] = list
+h
+```
+
+```elixir
+t
+```
+
+## Tuple
+
+```elixir
+{a, b} = {1, 2}
+a
+```
+
+```elixir
+{:reply, msg, state} = {:reply, "User found!", ["Johnson", "Jane", "Doe"]}
+msg
+```
+
+## Keyword List
+
+```elixir
+data = [a: 1, b: 2]
+```
+
+```elixir
+[{:a, 1}] = [a: 1]
+```
+
+```elixir
+data[:a]
+```
+
+## Maps
+
+```elixir
+my_map = %{a: 1, b: 2, c: 3}
+my_map
+```
+
+```elixir
+%{a: first, b: second, c: third} = my_map
+```
+
+```elixir
+first
+```
+
+```elixir
+%{b: second} = my_map
+second
+```
+
+```elixir
+my_map.a
+```
+
+```elixir
+map2 = %{"a" => 1, "b" => 2, "c" => 3}
+```
+
+```elixir
+%{"c" => c} = map2
+c
+```
+
+```elixir
+map2 = %{map2 | "c" => 4 }
+```
+
+## Struct
+
+```elixir
+defmodule User do
+  defstruct username: "", email: "", age: nil
+end
+```
+
+```elixir
+user1 = %User{username: "Johnson", age: 27, email: "jj@gmail.com"}
+```
+
+```elixir
+%{username: username} = user1
+username
+```
+
+```elixir
+user1 = %{user1 | age: 30}
+```
+
+## Untitled

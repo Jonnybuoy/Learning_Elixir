@@ -1,0 +1,140 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# Flow Control
+
+## Case
+
+```elixir
+list = [1, 2, 3]
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[1, 2, 3]
+```
+
+```elixir
+case Enum.at(list, 2) do
+  1 -> "Not a Match"
+  3 -> "3 is a match!"
+  _ -> "Catch all"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"3 is a match!"
+```
+
+```elixir
+defmodule Post do
+  defstruct(
+    id: nil,
+    title: "",
+    description: "",
+    author: ""
+    )
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Post, <<70, 79, 82, 49, 0, 0, 10, ...>>,
+ %Post{id: nil, title: "", description: "", author: ""}}
+```
+
+```elixir
+post1 = %Post{id: 1, title: "Some title", description: "Some description", author: "Johnson"}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%Post{id: 1, title: "Some title", description: "Some description", author: "Johnson"}
+```
+
+```elixir
+case post1 do
+  %{author: "Julius Caesar"} -> "Got a post from Julius Caesar"
+  %{author: "Jane Doe"} -> "Got a post from Jane Doe"
+  _ -> "Got a post from #{post1.author}"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Got a post from Johnson"
+```
+
+```elixir
+post1 = %{post1 | author: "John Doe"}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%Post{id: 1, title: "Some title", description: "Some description", author: "John Doe"}
+```
+
+```elixir
+case post1 do
+  %{author: "Julius Caesar"} -> "Got a post from Julius Caesar"
+  %{author: "Jane Doe"} -> "Got a post from Jane Doe"
+  _ -> "Got a post from #{post1.author}"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Got a post from John Doe"
+```
+
+## Condition
+
+```elixir
+cond do
+  post1.author == "Julius Caesar" -> "Editing a post from Julius Caesar"
+  post1.author == "John Doe" -> "Editing a post from John Doe"
+  true -> "This is catch all"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Editing a post from John Doe"
+```
+
+```elixir
+cond do
+  hd(list) == 1 -> "Got a 1"
+  true -> "Head is #{hd(list)}"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"Got a 1"
+```
+
+## If/Else
+
+```elixir
+if true do
+  "This will work"
+else
+  "Else this will work"
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+"This will work"
+```
