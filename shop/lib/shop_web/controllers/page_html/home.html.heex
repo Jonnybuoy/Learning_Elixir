@@ -1,0 +1,21 @@
+<.flash_group flash={@flash} />
+
+<h1>Welcome to SHOP!</h1>
+<h2>This is the best video game e-commerce store</h2>
+
+<hr class="my-10" />
+
+<p>Select your favorite console:</p>
+
+<form>
+  <select name="console" id="console">
+    <option value="pc">PC</option>
+    <option value="xbox">Xbox</option>
+    <option value="playstation">PlayStation</option>
+    <option value="nintendo">Nintendo</option>
+  </select>
+
+  <button type="submit">Save</button>
+</form>
+
+<p class="mt-8">Selected console: <%= @console %></p>
