@@ -1,5 +1,6 @@
-<.product :if={@product} name={@product.name}/>
+<.product :if={@product} product={@product}/>
 
-<.button>
+<%!-- <.button>
 Click Me!
-</.button>
+</.button> --%>
+<.back navigate={~p"/products"}>Back to product listing </.back>
