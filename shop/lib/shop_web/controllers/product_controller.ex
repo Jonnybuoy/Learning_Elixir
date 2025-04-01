@@ -1,13 +1,23 @@
 defmodule ShopWeb.ProductController do
   use ShopWeb, :controller
+  alias Shop.{Repo, Product}
+
 
   def index(conn, _params) do
     # dbg(params) -> to debug
-    render(conn, :index)
+    products = Repo.all(Product)
+    conn
+    |> assign(:products, products)
+    |> render(:index)
   end
 
+  @spec show(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def show(conn, %{"id" => id}) do
-    render(conn, :show, id: id)
+    product = Repo.get(Product, id)
+
+    conn
+    |> assign(:product, product)
+    |> render(:show)
   end
 
 

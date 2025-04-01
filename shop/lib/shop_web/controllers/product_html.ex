@@ -8,4 +8,13 @@ defmodule ShopWeb.ProductHTML do
   # end
 
   embed_templates "product_html/*"
+
+  attr :name, :string, required: true
+
+  def product(assigns) do
+    ~H"""
+    <%!-- <h1>Game: <%= assigns.name %></h1> --%>
+    <h1>Game: <%= @name %></h1>
+    """
+  end
 end
