@@ -1,14 +1,13 @@
 defmodule TutorialProject.Structs.SevenWonders do
-
   defstruct name: "", country: ""
   alias TutorialProject.Structs.SevenWonders
 
   @type t :: %SevenWonders{
-    name: String.t(),
-    country: String.t()
-  }
+          name: String.t(),
+          country: String.t()
+        }
 
-  #----------------------All----------------------------#
+  # ----------------------All----------------------------#
   @spec all :: [t()]
   def all() do
     [
@@ -22,12 +21,12 @@ defmodule TutorialProject.Structs.SevenWonders do
     ]
   end
 
-  #-----------------------------------------------------------
+  # -----------------------------------------------------------
   @spec print_names([t()]) :: :ok
   def print_names(wonders) do
-    Enum.each(wonders, fn %{name: name} -> IO.puts(name) end )
+    wonders
+    |> Enum.each(fn %{name: name} -> IO.puts(name) end)
   end
-
 
   @spec filter_by_country([t()], String.t()) :: [t()]
   def filter_by_country(wonders, country) do
@@ -59,5 +58,4 @@ defmodule TutorialProject.Structs.SevenWonders do
   def all_names(wonders) do
     for %{name: name} <- wonders, do: name
   end
-
 end

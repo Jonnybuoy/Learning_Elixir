@@ -34,6 +34,7 @@ defmodule TutorialProject.Structs.Expense do
   @spec sort_by_date([t()]) :: [t()]
   def sort_by_date(expenses) do
     expenses
+    # |> Enum.sort_by(fn expense -> expense.date end)
     |> Enum.sort_by(& &1.date)
   end
 
